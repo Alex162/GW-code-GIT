@@ -1,7 +1,7 @@
 clc
 clear all
 close all
-%test GITHUB
+%Test github 2
 tic
 dt=0.001;
 dx=0.002;
