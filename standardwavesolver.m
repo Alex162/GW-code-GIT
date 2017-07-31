@@ -12,7 +12,7 @@ endtime=1;
 x=0:dx:10;
 g(1:length(x))=0 ;
 %initial condition of the derivative of h (ie. dh/dt(at t= 0) = g(x)
-
+h=strcat('h_',num2str(dt),'_',num2str(dx))
 h=exp(-400*(x-0.3).^2)+1;
 % LHBC=0;
 % RHBC=0;
@@ -47,3 +47,6 @@ for i=2:endtime/dt
 end
 % plot(0:dt:endtime, h(:,200))
 toc
+
+
+save('test1')

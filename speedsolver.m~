@@ -32,10 +32,7 @@ g(1:length(rgrid))=0 ;
 %initial condition of the derivative of h (ie. dh/dt(at t= 0) = g(x)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 source_centre=15;
-
-ThicknessPara=1;
-Amp=1;
-ha= @(x) Amp*exp(-ThicknessPara*(x-source_centre).^2);
+ha= @(x) 1*exp(-1*(x-source_centre).^2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 h=ha(rgrid);%initial condition
 % LHBC=0;
@@ -90,9 +87,6 @@ title(strcat(char(ha),'100 test station'))
 toc
 
 str=strcat('VRW_',num2str(rgrid(end)),'_',num2str(endtime),'_',num2str(rint),...
-    '_',num2str(source_centre),'_',num2str(ThicknessPara),'_',num2str(Amp))
+    '_',num2str(source_centre),'_',num2str(')
 save(str)
-%syntax: domain size, endtime, test station, source location, thickness,
-%amplitude
-
 %plots time history at a given point.
