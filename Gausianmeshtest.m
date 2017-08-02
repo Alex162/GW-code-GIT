@@ -3,8 +3,8 @@ clear all
 close all
 
 
-x=-4:0.001:4
+x=-4:0.005:4
 
-y=exp(-10*(x.^2))
+y=exp(-100*(x.^2))
 
 plot(x,y,'.')

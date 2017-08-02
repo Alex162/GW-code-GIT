@@ -8,8 +8,8 @@ sigma=-3;
 %Reggie wheeler parameters and potential eqn:
 VRW= @(r) (1-2*M./r).*((L.*(L+1))./(r.^2)+sigma.*(2*M./(r.^3)));
 
-endtime=200;
-dt=0.005;
+endtime=400;
+dt=0.005
 dx=0.01;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 rint=100;
@@ -17,7 +17,7 @@ rint=100;
 %computation parameters
 p=(dt^2)/(dx^2);
 
-rgrid=2*M:dx:400*M;
+rgrid=2*M:dx:800*M;
 %spatial domain
 
 VRWpot=VRW(rgrid);
@@ -31,11 +31,11 @@ t=[0,dt,2*dt];
 g(1:length(rgrid))=0 ;
 %initial condition of the derivative of h (ie. dh/dt(at t= 0) = g(x)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-source_centre=15;
+sourcecentre=120;
 
 ThicknessPara=1;
-Amp=1;
-ha= @(x) Amp*exp(-ThicknessPara*(x-source_centre).^2);
+Amp=0.001;
+ha= @(x) Amp*exp(-ThicknessPara*(x-sourcecentre).^2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 h=ha(rgrid);%initial condition
 % LHBC=0;
@@ -85,14 +85,16 @@ plot(t,vectint)
 figure(3)
 semilogy(t,abs(vectint))
 axis([0,endtime,10^-20,1])
-
+annotation('textbox','String',[.0,.0,.3,.3],'String',strcat('Amp=',num2str(Amp),...
+    ' ThicknessPara=',num2str(ThicknessPara),' sourcecentre=',num2str(sourcecentre)),'FitBoxToText','on')
 title(strcat(char(ha),'100 test station'))
 toc
 
 str=strcat('VRW_',num2str(rgrid(end)),'_',num2str(endtime),'_',num2str(rint),...
-    '_',num2str(source_centre),'_',num2str(ThicknessPara),'_',num2str(Amp))
+    '_',num2str(sourcecentre),'_',num2str(ThicknessPara),'_',num2str(Amp))
 save(str)
-%syntax: domain size, endtime, test station, source location, thickness,
+
+%syntax: Potential, domain size, endtime, test station, source location, thickness,
 %amplitude
 
 %plots time history at a given point.
