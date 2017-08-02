@@ -33,8 +33,8 @@ g(1:length(rgrid))=0 ;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 sourcecentre=120;
 
-ThicknessPara=1;
-Amp=0.001;
+ThicknessPara=10;
+Amp=3.1624;
 ha= @(x) Amp*exp(-ThicknessPara*(x-sourcecentre).^2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 h=ha(rgrid);%initial condition
@@ -90,7 +90,7 @@ annotation('textbox','String',[.0,.0,.3,.3],'String',strcat('Amp=',num2str(Amp),
 title(strcat(char(ha),'100 test station'))
 toc
 
-str=strcat('VRW_',num2str(rgrid(end)),'_',num2str(endtime),'_',num2str(rint),...
+str=strcat('VRW_Mp5_',num2str(rgrid(end)),'_',num2str(endtime),'_',num2str(rint),...
     '_',num2str(sourcecentre),'_',num2str(ThicknessPara),'_',num2str(Amp))
 save(str)
 

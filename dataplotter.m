@@ -3,7 +3,7 @@ clear all
 close all
 
 
-load('VRW_400_400_100_120_1_p001.mat')
+load('VRW_400_400_100_120_1_1.mat')
 %syntax:Potential, possibly mesh change indicator, domain size, endtime, test station, source location, thickness,
 %amplitude
 figure(1)
@@ -13,7 +13,7 @@ axis([0,endtime,10^-20,1])
  %   ' ThicknessPara=',num2str(ThicknessPara),' sourcecentre=',num2str(sourcecentre)),'FitBoxToText','on')
 title(strcat(char(ha),'100 test station'))
 hold on
-load('VRW_400_400_100_120_10_p001.mat')
+load('VRW_Mp5_400_400_100_120_10_3p1624.mat')
 %syntax:Potential, domain size, endtime, test station, source location, thickness,
 %amplitude
 
@@ -25,7 +25,7 @@ title(strcat(char(ha),'100 test station'))
 % 
 % 
 
-load('VRW_Mp5_400_400_100_120_100_p001')
+load('VRW_Mp5_400_400_100_120_100_10p003.mat')
 %syntax:Potential, domain size, endtime, test station, source location, thickness,
 %amplitude
 
