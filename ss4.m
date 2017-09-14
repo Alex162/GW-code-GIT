@@ -8,16 +8,16 @@ sigma=-3;
 %Reggie wheeler parameters and potential eqn:
 VRW= @(r) (1-2*M./r).*((L.*(L+1))./(r.^2)+sigma.*(2*M./(r.^3)));
 
-endtime=2400;
-dt=0.005;
-dx=0.01;
+endtime=2200;
+dt=0.0025;
+dx=0.005;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-rint=100;
+rint=800;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %computation parameters
 p=(dt^2)/(dx^2);
 
-rgrid=2*M:dx:400*M;
+rgrid=2*M:dx:3200*M;
 %spatial domain
 
 VRWpot=VRW(rgrid);
@@ -31,10 +31,10 @@ t=[0,dt,2*dt];
 g(1:length(rgrid))=0 ;
 %initial condition of the derivative of h (ie. dh/dt(at t= 0) = g(x)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-sourcecentre=80;
+sourcecentre=200;
 
-ThicknessPara=1;
-Amp=1;
+ThicknessPara=100;
+Amp=0.001;
 ha= @(x) Amp*exp(-ThicknessPara*(x-sourcecentre).^2);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 h=ha(rgrid);%initial condition
@@ -69,14 +69,14 @@ for i=2:endtime/dt
 %         + h(i,end-1)*(-2/(dx^2)-1/dx) + h(i,end-2)/(dx^2) - h(i-1,end)/(dt^2));
 % 
      if mod(i,100)==0
-%        generates real time picture of the system
-      drawnow
-      
-        plot(rgrid,h(3,:))
-        xlabel('x')
-        ylabel('h')
-       
-        axis([rgrid(1)-1,rgrid(end)+1, -1, 1])
+        %generates real time picture of the system
+%       drawnow
+%       
+%         plot(rgrid,h(3,:))
+%         xlabel('x')
+%         ylabel('h')
+%        
+%        % axis([rgrid(1)-1,rgrid(end)+1, -1, 1])
          disp(t(i+1))
      end
     h(1,:)=h(2,:);
@@ -94,7 +94,7 @@ annotation('textbox','String',[.0,.0,.3,.3],'String',strcat('Amp=',num2str(Amp),
 title(strcat(char(ha),'100 test station VRW+0.1*exp(-10*(x-5).^2)'))
 toc
 
-str=strcat('VRW_',num2str(rgrid(end)),'_',num2str(endtime),'_',num2str(rint),...
+str=strcat('VRW_Mp5_',num2str(rgrid(end)),'_',num2str(endtime),'_',num2str(rint),...
     '_',num2str(sourcecentre),'_',num2str(ThicknessPara),'_',num2str(Amp))
 save(str)
 
