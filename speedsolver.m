@@ -8,16 +8,16 @@ sigma=-3;
 %Reggie wheeler parameters and potential eqn:
 VRW= @(r) (1-2*M./r).*((L.*(L+1))./(r.^2)+sigma.*(2*M./(r.^3)));
 
-endtime=2400;
+endtime=2000;
 dt=0.005;
 dx=0.01;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-rint=100;
+rint=600;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %computation parameters
 p=(dt^2)/(dx^2);
 
-rgrid=2*M:dx:400*M;
+rgrid=2*M:dx:2800*M;
 %spatial domain
 
 VRWpot=VRW(rgrid);
@@ -69,15 +69,15 @@ for i=2:endtime/dt
 %         + h(i,end-1)*(-2/(dx^2)-1/dx) + h(i,end-2)/(dx^2) - h(i-1,end)/(dt^2));
 % 
      if mod(i,100)==0
-%        generates real time picture of the system
-      drawnow
-      
-        plot(rgrid,h(3,:))
-        xlabel('x')
-        ylabel('h')
-       
-        axis([rgrid(1)-1,rgrid(end)+1, -1, 1])
-         disp(t(i+1))
+% %        generates real time picture of the system
+%       drawnow
+%       
+%         plot(rgrid,h(3,:))
+%         xlabel('x')
+%         ylabel('h')
+%        
+%         axis([rgrid(1)-1,rgrid(end)+1, -1, 1])
+          disp(t(i+1))
      end
     h(1,:)=h(2,:);
     h(2,:)=h(3,:);

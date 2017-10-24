@@ -22,17 +22,15 @@ t800p=t;
 h800p=vectint;
 
 figure(2)
-semilogy(t200,abs(h200))
+plot(t200,log(abs(h200)))
 hold on
-semilogy(t400-200,abs(h400))
-semilogy(t800-600,abs(h800))
-% plot(t200p,1000*log(abs(h200p)))
-% plot(t800p-600,1000*log(abs(h800p)))
-axis([250,450,10^-10,1])
-ylabel('|h|')
-xlabel('t')
+plot(t400-200,log(abs(h400)))
+plot(t800-600,log(abs(h800)))
+plot(t200p,1000*log(abs(h200p)))
+plot(t800p-600,1000*log(abs(h800p)))
+axis([0,endtime,-20,1])
 
-legend('source centre=200','source centre=400','source centre=800')
+legend('source centre=200','source centre=400','source centre=800','source centre =)
 % load('TWscalar_600_100')
 % h100=plotything;
 % t100=t;

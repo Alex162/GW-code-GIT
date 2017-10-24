@@ -2,7 +2,7 @@ clc
 clear all
 close all
 
-load('VRWT_900_1200_400_80_1_1')
+load('VRW_400_400_100_120_1_1')
 %syntax:Potential, possibly mesh change indicator, domain size, endtime, test station, source location, thickness,
 %amplitude
 

@@ -20,24 +20,37 @@ tort= @(r) 1+2*M*log(r./(2*M)-1)
 r= @(x) 2*M*lambertw(exp(x./((2*M))-1))+2*M
 
 
-x=[-20:0.01:20];
+
+x=[-20:0.01:50];
+xchip=[-400:0.01:400];
+rx=r(x);
 
 
-plot(x,VRW(r(x)))
+
+
+% pp=pchip(x,rx);
+% 
+% pppredict=ppval(pp,xchip);
+% 
+% plot(xchip,pppredict)
+% hold on
+% plot(xchip,xchip)
+% plot(x,(rx))
+% legend('fit','x vs x','data')
 
 
 figure(2)
 
 hold on
 
-x=-100*M:0.01:500*M;
-VRWx=VRW(x);
+VRWx=VRW(r(x));
 % VRWx=VRWx+0.4*exp(-1*(x-5).^2)
-plot(x,VRWx)
-title('Reggie-Wheeler potential vs radius')
-xlabel('Radial coordinate in black hole radii (R/2M)')
-axis([0,50,0,0.7])
+plot(rx,VRWx)
+title('L=2 Reggie-Wheeler potential vs radius')
+xlabel('r')
+ylabel('V_{RW}')
+axis([x(1),x(end),0,0.7])
 % figure(3)
 % semilogy(x,VRWx)
 % title('VRW vs radius')
-
+toc
